@@ -23,6 +23,9 @@ This project was built as a hands-on learning experience to understand modern De
 
 ## Architecture
 
+<img width="1204" height="425" alt="image" src="https://github.com/user-attachments/assets/664b970e-a92f-46c3-9602-55e5ecf39ab7" />
+
+
 ### High-Level Overview
 
 ```
