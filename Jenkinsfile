@@ -67,7 +67,7 @@ pipeline {
                 script {
                     sh '''
                         echo "Waiting for app to start..."
-                        for i in {1..30}; do
+                        for i in $(seq 1 30); do
                             if curl -f http://localhost:8000/ 2>/dev/null; then
                                 echo "App is healthy!"
                                 exit 0
