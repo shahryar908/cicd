@@ -65,8 +65,19 @@ pipeline {
             steps {
                 echo 'Performing health check...'
                 script {
-                    sh 'sleep 5'
-                    sh 'curl -f http://localhost:8000/ || exit 1'
+                    sh '''
+                        echo "Waiting for app to start..."
+                        for i in {1..30}; do
+                            if curl -f http://localhost:8000/ 2>/dev/null; then
+                                echo "App is healthy!"
+                                exit 0
+                            fi
+                            echo "Attempt $i failed, retrying..."
+                            sleep 2
+                        done
+                        echo "Health check failed after 30 attempts"
+                        exit 1
+                    '''
                 }
             }
         }
