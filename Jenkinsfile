@@ -68,7 +68,7 @@ pipeline {
                     sh '''
                         echo "Waiting for app to start..."
                         for i in $(seq 1 30); do
-                            if curl -f http://localhost:8000/ 2>/dev/null; then
+                            if docker exec fastapi-app curl -f http://localhost:8000/ 2>/dev/null; then
                                 echo "App is healthy!"
                                 exit 0
                             fi
